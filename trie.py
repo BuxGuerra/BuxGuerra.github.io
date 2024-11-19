@@ -1,7 +1,6 @@
-from typing import Dict, field
-from dataclasses import dataclass
+from typing import Dict
+from dataclasses import dataclass, field
 
-# teste para ver se sobe no github
 
 @dataclass
 class Vertice:
@@ -24,7 +23,8 @@ class Trie:
            print("string já está na Trie")
            return False
         vertice = vertice.filho[byte]
-      vertice.valor = string
+      vertice.valor = self.tamanho
+      self.tamanho += 1
       return True
     except Exception as e:
       print(f"Erro {e} ao inserir string{string}")
@@ -67,6 +67,6 @@ class Trie:
         if byte not in v_atual.filho:
             return None
         v_atual = v_atual.filho[byte]
-        return v_atual.valor
+        return v_atual
     except Exception as e:
       print(f"Erro {e} ao buscar string{palavra}")
