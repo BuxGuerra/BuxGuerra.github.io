@@ -1,11 +1,12 @@
 import trie
+import sys
 
 def comprimir(arquivoEntrada):
 
     #inicializar trie
     dicionario = trie.Trie()
     for byte in range(256):
-        dicionario.inserir(byte)
+        dicionario.inserir(bytes([byte]))
 
     l =""
 
@@ -30,3 +31,7 @@ def comprimir(arquivoEntrada):
 
 
     
+if __name__ == '__main__':
+
+    arquivo = sys.argv[1]
+    comprimir(arquivo)
