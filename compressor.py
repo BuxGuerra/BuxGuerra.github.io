@@ -8,26 +8,26 @@ def comprimir(arquivoEntrada):
     for byte in range(256):
         dicionario.inserir(bytes([byte]))
 
-    l = bytes()
+    palavra = bytes()
 
     #processar arquivo
     with open(arquivoEntrada, 'rb') as entrada, open("./arquivoSaida", 'wb') as saida:
     
         while True:
-            x = entrada.read(1)
-            if not x:
+            b = entrada.read(1)
+            if not b:
                 break
 
-            if dicionario.procurar(l+x) != None:
-                l = l+x
+            if dicionario.procurar(palavra+b) != None:
+                palavra = palavra+b
             else:
-                saida.write(dicionario.procurar(l).valor)
-                dicionario.inserir(l+x) #garantir que a logica da trie coloca o valor certo
-                l = x
+                saida.write(dicionario.procurar(palavra).valor)
+                dicionario.inserir(palavra+b) #garantir que a logica da trie coloca o valor certo
+                palavra = b
 
         #Garantir escrita da ultima palavra
-        if l:
-            saida.write(dicionario.procurar(l).valor)
+        if palavra:
+            saida.write(dicionario.procurar(palavra).valor)
 
 
     
