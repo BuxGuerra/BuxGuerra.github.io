@@ -67,6 +67,6 @@ class Trie:
         if byte not in v_atual.filho:
             return None
         v_atual = v_atual.filho[byte]
-        return v_atual
+      return v_atual
     except Exception as e:
       print(f"Erro {e} ao buscar string{palavra}")
