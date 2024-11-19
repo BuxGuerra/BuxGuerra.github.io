@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 @dataclass
 class Vertice:
   filho: Dict[int, 'Vertice'] = field(default_factory=dict)
-  valor: int = None
+  valor: bytes = None
 
 
 class Trie:
@@ -23,7 +23,7 @@ class Trie:
            print("string já está na Trie")
            return False
         vertice = vertice.filho[byte]
-      vertice.valor = self.tamanho
+      vertice.valor = bytes([self.tamanho])
       self.tamanho += 1
       return True
     except Exception as e:
@@ -62,7 +62,7 @@ class Trie:
 
   def procurar(self, palavra: bytes) -> Vertice:
     try:
-      v_atual = self.root
+      v_atual = self.raiz
       for byte in palavra:
         if byte not in v_atual.filho:
             return None

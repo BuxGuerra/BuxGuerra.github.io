@@ -8,7 +8,7 @@ def comprimir(arquivoEntrada):
     for byte in range(256):
         dicionario.inserir(bytes([byte]))
 
-    l =""
+    l = bytes()
 
     #processar arquivo
     with open(arquivoEntrada, 'rb') as entrada, open("./arquivoSaida", 'wb') as saida:
