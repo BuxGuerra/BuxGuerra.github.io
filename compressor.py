@@ -50,7 +50,7 @@ def comprimir(arquivo_entrada: str,  n_max_bits: int, arquivo_saida: str=None) -
                 
                 # Adiciona novo código se houver espaço
                 if proximo_vertice < TAMANHO_MAX:
-                    dicionario.inserir(palavra, proximo_vertice)
+                    dicionario.inserir(palavra)
                     proximo_vertice += 1
                 
                 palavra = byte
@@ -58,6 +58,9 @@ def comprimir(arquivo_entrada: str,  n_max_bits: int, arquivo_saida: str=None) -
         # Processa última palavra
         if palavra:
             vertice = dicionario.procurar(palavra).valor
+
+            vertice = int.from_bytes(vertice, "big")
+
             buffer_bits = (buffer_bits << n_max_bits) | vertice
             contador_bits += n_max_bits
             

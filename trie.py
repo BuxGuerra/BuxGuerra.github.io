@@ -19,11 +19,17 @@ class Trie:
       for byte in string:
         if byte not in vertice.filho:
           vertice.filho[byte] = Vertice()
-        else: 
-           print("string já está na Trie")
-           return False
+        
+        #else: 
+        #   print("string já está na Trie")
+        #   return False
+        
         vertice = vertice.filho[byte]
-      vertice.valor = bytes([self.tamanho])
+
+      if(self.tamanho > 255):
+        vertice.valor = self.tamanho.to_bytes(2, 'big')
+      else:  
+        vertice.valor = bytes([self.tamanho])
       self.tamanho += 1
       return True
     except Exception as e:
