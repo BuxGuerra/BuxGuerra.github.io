@@ -2,12 +2,7 @@ import trie
 import sys
 
 
-def comprimir(arquivo_entrada: str,  n_max_bits: int, arquivo_saida: str=None) -> None:
-    
-    if arquivo_saida is None:
-        arquivo_saida = arquivo_entrada + ".lzw"
-
-    TAMANHO_MAX = 1 << n_max_bits
+def descomprimir(arquivo_entrada: str, arquivo_saida: str=None) -> None:
     
     # Inicializar trie
     dicionario = trie.Trie()
@@ -20,16 +15,26 @@ def comprimir(arquivo_entrada: str,  n_max_bits: int, arquivo_saida: str=None) -
     
     with open(arquivo_entrada, 'rb') as entrada, open(arquivo_saida, 'wb') as saida:
         palavra = bytes()
+
+        n_max_bits = entrada.read(1)
         
-
-        #Primeiro byte do arquivo comprimido indica tamanho dos códigos
-        saida.write(bytes([n_max_bits]))
-
-
         while True:
             byte = entrada.read(1)
             if not byte:
                 break
+
+
+            buffer_bits = (buffer_bits << 8) | byte
+            contador_bits += 8
+
+            if contador_bits >= n_max_bits:
+                c = (buffer_bits >> (contador_bits - n_max_bits)) & 0xFF
+                
+                if(dicionario.procurar(c) == None):
+                    
+
+
+
             
             palavra += byte
             vertice = dicionario.procurar(palavra)
@@ -83,23 +88,10 @@ def comprimir(arquivo_entrada: str,  n_max_bits: int, arquivo_saida: str=None) -
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print("Uso: python compressor.py arquivo_entrada [n_max_bits]")
+        print("Uso: python descompressor.py arquivo_entrada")
         sys.exit(1)
 
     arquivo = sys.argv[1]
     
-    # Default n_max_bits value
-    n_max_bits = 12
-    
-    # Controle de argumento n_max_bits
-    if len(sys.argv) > 2:
-        try:
-            n_max_bits = int(sys.argv[2])
-            if n_max_bits < 8 or n_max_bits > 16:
-                print("Erro: n_max_bits deve estar entre 8 e 16")
-                sys.exit(1)
-        except ValueError:
-            print("Erro: n_max_bits deve ser um número inteiro")
-            sys.exit(1)
 
-    comprimir(arquivo, n_max_bits)
+    descomprimir(arquivo)
