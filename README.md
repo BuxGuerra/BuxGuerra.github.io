@@ -12,3 +12,25 @@ Os nós da Trie foram implementados na classe "Vertice", que cotém dois atribut
 
 
 ### Compressor.py
+
+A compressão de arquivos é feita pelo script "compressor.py". Que deve ser utilizado da seguinte forma:
+
+
+python3 compressor.py "arquivo para compressão" -b "N"
+
+N -> Número entre 9 e 16 que define o tamanho em bits dos códigos
+
+
+O compressor funciona com qualquer tipo de arquivo, pois sua lógica está implementada em cima dos arquivos em binário. Assim, as palavras armazenadas no dicionário serão todas sequências de bytes.
+A lógica da compressão está na função "comprimir", que recebe o arquivo a ser comprimido, o tamanho em bits dos códigos e um caminho para o arquivo de saída.
+
+
+### Descompressor.py
+
+A descompressão de arquivos é feita pelo script "descompressor.py". Que deve ser utilizado da seguinte forma:
+
+python3 descompressor.py "arquivo para descompressão
+
+## Exemplos
+
+## Análise
