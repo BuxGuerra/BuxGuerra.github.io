@@ -37,7 +37,7 @@ A função se inicia com a inicialização do dicionário, ou seja, inserimos na
 
 A descompressão de arquivos é feita pelo script "descompressor.py". Que deve ser utilizado da seguinte forma:
 
-python3 descompressor.py "arquivo para descompressão
+python3 descompressor.py "arquivo para descompressão"
 
 ## Exemplos
 
