@@ -23,7 +23,7 @@ N -> Número entre 9 e 16 que define o tamanho em bits dos códigos
 
 O compressor funciona com qualquer tipo de arquivo, pois sua lógica está implementada em cima dos arquivos em binário. Assim, as palavras armazenadas no dicionário serão todas sequências de bytes.
 A lógica da compressão está na função "comprimir", que recebe o arquivo a ser comprimido, o tamanho em bits dos códigos e um caminho para o arquivo de saída.
-A função se inicia com a inicialização do dicionário, ou seja, inserimos na Trie todos os 256 valores possíveis que apenas um byte consegue armazenar. Na sequência abrimos o arquivo a ser comprimido para leitura em modo binário, e o arquivo 
+A função se inicia com a inicialização do dicionário, ou seja, inserimos na Trie todos os 256 valores possíveis que apenas um byte consegue armazenar (0 a 255). Na sequência, abrimos o arquivo a ser comprimido para leitura em modo binário, e o arquivo que iremos utilizar como saída para escrita em modo binário. O algoritmo segue da seguinte forma, começamos com uma palavra P inicialmente vazia e iteramos sobre todos os bytes do arquivo de entrada. A cada iteração concatenamos o byte lido com P e verificamos se o resultado está presente no dicionário, caso esteja, passamos ao próximo byte, caso contrário, escrevemos o código de P no arquivo de saída, adicionamos a concatenação de P com o byte lido no dicionário e a palavra P passa a conter apenas o byte lido. Essa iteração 
 
 
 ### Descompressor.py
