@@ -264,12 +264,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="análise" class="level2">
 <h2 class="anchored" data-anchor-id="análise">Análise</h2>
-<p>Dentro do diretório test_files encontram-se diversos tipos de arquivo em vários formatos, como bitmap, texto e arquivos binários. Para cada tipo de arquivo, foram analisado arquivos com conteúdo de diversos níveis de entropia de informação, desde arquivos aleatórios até arquivos altamente estruturados, como pode-se ver pelos exemplos em bitmap abaixo:</p>
+<p>Dentro do diretório test_files encontram-se diversos tipos de arquivo em vários formatos, como bitmap, texto e arquivos binários. Para cada tipo de arquivo, foi analisado conteúdo de diversos níveis de entropia de informação, desde arquivos altamente estruturados até arquivos aleatórios, como pode-se ver pelos exemplos em bitmap abaixo:</p>
 <p><img src="./test_files/gradient.bmp" class="img-fluid" alt="gradient"> <img src="./test_files/pattern.bmp" class="img-fluid" alt="pattern"> <img src="./test_files/random.bmp" class="img-fluid" alt="random"></p>
 <p>Para cada um dos arquivos foram gerados dados da execução de compressor.py através da flag –stats, como descrito anteriormente. Seguem abaixo os resultados:</p>
 <p><img src="./test_files/gradient-estatisticas_completas.png" class="img-fluid" alt="gradient-est"> <img src="./test_files/pattern-estatisticas_completas.png" class="img-fluid" alt="pattern-est"> <img src="./test_files/random-estatisticas_completas.png" class="img-fluid" alt="random-bmp"></p>
 <p><img src="./test_files/binary_pattern-estatisticas_completas.png" class="img-fluid" alt="binary-pattern"> <img src="./test_files/binary_random-estatisticas_completas.png" class="img-fluid" alt="binary-random"></p>
 <p><img src="./test_files/repetitive-estatisticas_completas.png" class="img-fluid" alt="repetitive-text"> <img src="./test_files/lorem-ipsum-estatisticas_completas.png" class="img-fluid" alt="lorem-ipsum"> <img src="./test_files/ramdom-estatisticas_completas.png" class="img-fluid" alt="random-text"></p>
+</section>
+<section id="conclusões" class="level2">
+<h2 class="anchored" data-anchor-id="conclusões">Conclusões:</h2>
+<p>Através dos testes realizados pode-se perceber que a compressão não funciona bem para arquivos completamente aleatórios, visto que o crescimento do dicionário é muito rápido para esses arquivos e o arquivo comprimido fica maior que o original.</p>
+<p>O resultado é o contrário para arquivos estruturados, como aqueles que possuem muitos padrões repetidos, visto que estes apresentam excelentes taxas de compressão.</p>
+<p>Observa-se também que no início do processo não obtem-se uma boa taxa de compressão dado que o dicionário ainda está consideravelmente vazio. No entanto, conforme o dicionário enche, a taxa rapidamente melhora.</p>
+<p>Por curiosidade, pode-se rodar o algoritmo outra vez sobre um arquivo já comprimido. Nesse caso, a segunda compressão aumenta o tamanho do arquivo, o que mostra-se que não se pode melhorar a performance da compressão ao rodar o algoritmo mais de uma vez.</p>
 </section>
 </section>
 

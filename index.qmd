@@ -217,8 +217,8 @@ Durante a descompressão, o algoritmo lê esses códigos binários e reconstrói
 ## Análise
 
 Dentro do diretório test_files encontram-se diversos tipos de arquivo em vários formatos,
-como bitmap, texto e arquivos binários. Para cada tipo de arquivo, foram analisado arquivos com conteúdo
-de diversos níveis de entropia de informação, desde arquivos aleatórios até arquivos altamente estruturados, 
+como bitmap, texto e arquivos binários. Para cada tipo de arquivo, foi analisado conteúdo
+de diversos níveis de entropia de informação, desde arquivos altamente estruturados até arquivos aleatórios, 
 como pode-se ver pelos exemplos em bitmap abaixo:
 
 ![gradient](./test_files/gradient.bmp)
@@ -237,4 +237,14 @@ Para cada um dos arquivos foram gerados dados da execução de compressor.py atr
 ![repetitive-text](./test_files/repetitive-estatisticas_completas.png)
 ![lorem-ipsum](./test_files/lorem-ipsum-estatisticas_completas.png)
 ![random-text](./test_files/ramdom-estatisticas_completas.png)
+
+## Conclusões:
+
+Através dos testes realizados pode-se perceber que a compressão não funciona bem para arquivos completamente aleatórios, visto que o crescimento do dicionário é muito rápido para esses arquivos e o arquivo comprimido fica maior que o original.
+
+O resultado é o contrário para arquivos estruturados, como aqueles que possuem muitos padrões repetidos, visto que estes apresentam excelentes taxas de compressão.
+
+Observa-se também que no início do processo não obtem-se uma boa taxa de compressão dado que o dicionário ainda está consideravelmente vazio. No entanto, conforme o dicionário enche, a taxa rapidamente melhora.
+
+Por curiosidade, pode-se rodar o algoritmo outra vez sobre um arquivo já comprimido. Nesse caso, a segunda compressão aumenta o tamanho do arquivo, o que mostra-se que não se pode melhorar a performance da compressão ao rodar o algoritmo mais de uma vez.
 
