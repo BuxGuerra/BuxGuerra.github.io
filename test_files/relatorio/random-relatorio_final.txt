@@ -1,6 +1,0 @@
-Relatório Final de Compressão
-=========================
-Tempo Total: 300.00ms
-Taxa de Compressão Final: 1.18
-Entradas no Dicionário: 4096
-Memória do Dicionário: 80.01KB

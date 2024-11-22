@@ -16,36 +16,39 @@ def analisar_estatisticas_compressao(arquivo_stats: str):
     memoria_dicionario = [s['memoria_dicionario'] / 1024 for s in stats]
     
     plt.style.use('seaborn')
-    figsize = (10, 6)
+    figsize = (15, 10)
+    
+    fig, axs = plt.subplots(2, 2, figsize=figsize)
+    
+    # Adiciona título à figura
+    fig.suptitle(f'Estatísticas de Compressão - {nome_original}', fontsize=16)
     
     # Gráfico 1: Taxa de Compressão
-    plt.figure(figsize=figsize)
-    plt.plot(momentos, taxas_compressao, 'b-', linewidth=3)
-    plt.title('Taxa de Compressão ao Longo do Tempo')
-    plt.xlabel('Tempo (ms)')
-    plt.ylabel('Taxa de Compressão')
-    plt.grid(True)
-    plt.savefig(f'{nome_original}-taxa_compressao.png')
-    plt.close()
+    axs[0, 0].plot(momentos, taxas_compressao, 'b-', linewidth=3)
+    axs[0, 0].set_title('Taxa de Compressão ao Longo do Tempo')
+    axs[0, 0].set_xlabel('Tempo (ms)')
+    axs[0, 0].set_ylabel('Taxa de Compressão')
+    axs[0, 0].grid(True)
     
     # Gráfico 2: Tamanho do Dicionário
-    plt.figure(figsize=figsize)
-    plt.plot(momentos, tamanhos_dicionario, 'b-', linewidth=3)
-    plt.title('Crescimento do Dicionário')
-    plt.xlabel('Tempo (ms)')
-    plt.ylabel('Número de Entradas')
-    plt.grid(True)
-    plt.savefig(f'{nome_original}-tamanho_dicionario.png')
-    plt.close()
+    axs[0, 1].plot(momentos, tamanhos_dicionario, 'b-', linewidth=3)
+    axs[0, 1].set_title('Crescimento do Dicionário')
+    axs[0, 1].set_xlabel('Tempo (ms)')
+    axs[0, 1].set_ylabel('Número de Entradas')
+    axs[0, 1].grid(True)
     
     # Gráfico 3: Memória do Dicionário
-    plt.figure(figsize=figsize)
-    plt.plot(momentos, memoria_dicionario, 'b-', linewidth=3)
-    plt.title('Consumo de Memória do Dicionário')
-    plt.xlabel('Tempo (ms)')
-    plt.ylabel('Memória (KB)')
-    plt.grid(True)
-    plt.savefig(f'{nome_original}-memoria_dicionario.png')
+    axs[1, 0].plot(momentos, memoria_dicionario, 'b-', linewidth=3)
+    axs[1, 0].set_title('Consumo de Memória do Dicionário')
+    axs[1, 0].set_xlabel('Tempo (ms)')
+    axs[1, 0].set_ylabel('Memória (KB)')
+    axs[1, 0].grid(True)
+    
+    # Remove the empty subplot
+    fig.delaxes(axs[1, 1])
+    
+    plt.tight_layout()
+    plt.savefig(f'{nome_original}-estatisticas_completas.png')
     plt.close()
     
     # Relatório de estatísticas finais
@@ -65,3 +68,4 @@ if __name__ == "__main__":
         sys.exit(1)
         
     analisar_estatisticas_compressao(sys.argv[1])
+
