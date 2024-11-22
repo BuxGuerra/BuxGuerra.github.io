@@ -1,3 +1,5 @@
+Link para o [relatorio](https://pages.github.com/) 
+
 ## Compressão LZW
 
 Esse repositório contém uma implementação, em python, do método de compressão Lempel-Ziv-Welch (LZW) que utiliza uma árvore trie como dicionário. Nessa implementação os arquivos de entrada são tratados como arquivos binários, o que permite sua utilização para a compressão de diversos tipos de arquivos. O algoritmo então utiliza o dicionário para auxiliar na transformação de sequências de bytes do binário do arquivo original em códigos de 9 a 16 bits, o que causa a redução de tamanho do arquivo. A grande vantagem deste método é a construção do dicionário ao mesmo tempo em que a compressão ou descompressão do arquivo é feita, o que faz ele se adaptar a cada um.
