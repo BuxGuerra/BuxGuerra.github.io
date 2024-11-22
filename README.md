@@ -1,4 +1,4 @@
-Link para o [relatorio](https://pages.github.com/) 
+Link para o [relatorio](https://buxguerra.github.io/) 
 
 ## Compressão LZW
 
